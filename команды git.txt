@@ -1,0 +1,89 @@
+clear - очистка экрана
+
+pwd
+cd ~/Desktop
+cd ..
+mkdir my-project
+cd my-project
+echo "some text" > file.txt // создать/перезаписать файл с текстом
+echo "some text" >> file.txt // добавить текст в конец файла
+echo > file.txt // создать/перезаписать файл без текста
+ls 
+ls -la (посмотреть скрытые папки)
+cat file.txt
+rm file.txt
+
+
+git init
+git --version
+
+//изменение конфигурации пишется вместо <>, если там пробел то оборачиваем в ковычках ""
+git config -- global user.name <> 
+git config -- global user.email <>
+
+//посмотреть настройки
+git config --list
+
+git branch -m <name> (переименовывание выбраной ветки)
+git status ()
+git add <name> (добавить один файл)
+git add . (добавить все файлы)
+
+git restore --staged first-file.txt // снимает из индекса (снимаестя с комита, но остаётся на диске)
+git restore --staged 
+
+git reset HEAD first-file.txt Делает то же самое — снимает файл с индекса, не трогая рабочую директорию.
+git reset HEAD или git reset - все файлы
+
+git commit -m <message> создание коммита с подписью
+git log - история изменений коммитов с sha1 хэшем
+git checkout <commit sha1> переключение между комитами (первые 4-5 символов хэша)
+git checkout <branch name> переключение между ветками (имя ветки)
+
+
+git cat-file -t 03c2f7d (-t и номер хэш) выдаст данные о хэше
+git cat-file -p 03c2f7d (-p и номер хэш) выдаст метаданные о комите
+
+git branch <branch name> Создание веток
+
+git checkout -b <branch name> Создаст и перейдёт
+
+git branch - отображает список всех веток
+
+git branch -m <new branch name> - переименовать текущую ветку
+
+git branch -d <branch name> - удалить ветку (при условии если мы не в ней)
+
+слияние веток
+git merge -m <feature branch> receiving branch - feature branch(в кавычках) обьединится с текущей веткой (receiving branch)
+
+в Visual Code ctrl+shift+P - install code command in PATH после чего в гите можно запускать код в vs коммандой:
+code .
+
+git merge --abort (отменить слияние)
+
+УДАЛЁННЫЙ РЕПОЗИТОРИЙ
+
+git push - загружает изменения из локального репозитория на репозиторий серва
+git pull - обратное действие
+
+git clone <URL> - клонирование локального репозитория с серва
+
+ORIGIN - это имя удадённого репозитория по умолчанию. Тоесть при клонировании создаётся связь и записывается имя в ORIGIN
+(после скачивании ветки будет не видно локально остальных веток находящихся в удалённом репозитории по команде git branch, для этого нужно команду git branch -a и после чего можно перейти на любую ветку командой git checkout <branch name>)
+
+СВЯЗЬ ЧУЩЕСТВУЮЩЕГО ЛОКАЛЬНОГО РЕПОЗИТОРИЯ С УДАЛЁННЫМ
+
+git remote add origin <url> подключение удалённого репозитория, при условии, что он там создан (на gitHub или gitLab или bitBucked) origin может быть любое имя, обычно остаётся origin
+
+При первой связи репозиториев из локальной в удплённую нужно связать ветки
+
+git push -u origin <branch>(тут говорится что например из текущей ветки main в сервер под названием ORIGIN в ветку с названием <branch>)
+после связывания веток можно просто обновлять командой git push
+не забудь указать токен, заранее созданный и настроеный
+
+git remote -посмотреть принодлежность к удалённому серверу
+git remote -v - проверить настройки удалённого сервера
+
+Посмотреть как локальная ветка master связана с удалённой веткой master
+git branch -vv
